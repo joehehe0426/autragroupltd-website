@@ -3,68 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autra Group Ltd</title>
+<title>Autra Group Ltd — POS Payment Platform</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #0a0a0f;
-    color: #e0e0e0;
-    line-height: 1.6;
-  }
-  nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 5%; background: #0d0d15;
-    border-bottom: 1px solid #1a1a2e;
-    position: sticky; top: 0; z-index: 100;
-  }
-  nav .logo { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
-  nav .logo span { color: #6c63ff; }
-  nav a { color: #999; text-decoration: none; margin-left: 2rem; transition: color 0.2s; }
-  nav a:hover { color: #6c63ff; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#06060e;color:#d0d0d0;line-height:1.6}
+  
+  /* Navigation */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5%;background:#080816;border-bottom:1px solid #1a1a30;position:sticky;top:0;z-index:100}
+  nav .logo{font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:1px}
+  .logo span{background:linear-gradient(135deg,#00d4aa,#00a3ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  nav .links a{color:#777;text-decoration:none;margin-left:2rem;font-size:.9rem;transition:color .2s}
+  nav .links a:hover{color:#00d4aa}
 
-  .hero {
-    text-align: center; padding: 8rem 5% 6rem;
-    background: linear-gradient(135deg, #0d0d15 0%, #1a1040 100%);
-  }
-  .hero h1 { font-size: 3.2rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
-  .hero h1 span { color: #6c63ff; }
-  .hero p { font-size: 1.2rem; color: #888; max-width: 600px; margin: 0 auto 2rem; }
-  .hero .cta {
-    display: inline-block; background: #6c63ff; color: #fff; padding: 0.8rem 2rem;
-    border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s;
-  }
-  .hero .cta:hover { background: #5a52d5; }
+  /* Hero */
+  .hero{text-align:center;padding:8rem 5% 6rem;background:radial-gradient(ellipse at 50% 0%,#0d2040 0%,#06060e 70%)}
+  .hero .badge{display:inline-block;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);color:#00d4aa;padding:.3rem 1rem;border-radius:20px;font-size:.8rem;margin-bottom:1.5rem}
+  .hero h1{font-size:3rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:1rem}
+  .hero h1 .green{color:#00d4aa}
+  .hero p{font-size:1.15rem;color:#888;max-width:600px;margin:0 auto 2.5rem}
+  .hero .cta{display:inline-block;background:linear-gradient(135deg,#00d4aa,#00a3ff);color:#000;padding:.85rem 2.2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+  .hero .cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,170,.25)}
 
-  section { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; }
-  section h2 { font-size: 2rem; color: #fff; margin-bottom: 2rem; text-align: center; }
-  section h2 span { color: #6c63ff; }
+  /* Partners */
+  .partners{text-align:center;padding:4rem 5%;background:#080816}
+  .partners h3{color:#555;font-size:.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:2rem}
+  .partner-grid{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+  .partner{color:#aaa;font-size:1.5rem;font-weight:700;letter-spacing:1px;opacity:.7;transition:opacity .3s}
+  .partner:hover{opacity:1;color:#00d4aa}
 
-  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-  .service-card {
-    background: #111122; border: 1px solid #1a1a2e; border-radius: 12px;
-    padding: 2rem; transition: border-color 0.3s, transform 0.3s;
-  }
-  .service-card:hover { border-color: #6c63ff; transform: translateY(-4px); }
-  .service-card h3 { color: #fff; margin-bottom: 0.8rem; }
-  .service-card p { color: #888; font-size: 0.95rem; }
-  .service-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+  /* Sections */
+  section{padding:5rem 5%;max-width:1100px;margin:0 auto}
+  section h2{font-size:2rem;color:#fff;margin-bottom:1rem;text-align:center}
+  section h2 .green{color:#00d4aa}
+  section .sub{text-align:center;color:#666;margin-bottom:3rem;font-size:.95rem}
 
-  .contact {
-    background: #111122; border: 1px solid #1a1a2e; border-radius: 12px;
-    padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto;
-  }
-  .contact a { color: #6c63ff; text-decoration: none; }
-  .contact a:hover { text-decoration: underline; }
+  /* Features */
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+  .feature{border:1px solid #1a1a30;border-radius:12px;padding:2rem;background:#0a0a18;transition:border-color .3s,transform .3s}
+  .feature:hover{border-color:#00d4aa;transform:translateY(-4px)}
+  .feature .icon{font-size:2.5rem;margin-bottom:1rem}
+  .feature h3{color:#fff;margin-bottom:.6rem;font-size:1.1rem}
+  .feature p{color:#777;font-size:.9rem}
 
-  footer {
-    text-align: center; padding: 2rem 5%;
-    border-top: 1px solid #1a1a2e; color: #666; font-size: 0.9rem;
-  }
+  /* Integration cards */
+  .integrations{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+  .int-card{border:1px solid #1a1a30;border-radius:10px;padding:2rem;text-align:center;background:#0a0a18;transition:border-color .3s}
+  .int-card:hover{border-color:#00a3ff}
+  .int-card .name{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+  .int-card .desc{color:#666;font-size:.85rem}
+  .int-card .tag{display:inline-block;margin-top:1rem;padding:.2rem .8rem;border-radius:4px;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;background:rgba(0,212,170,.1);color:#00d4aa}
 
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    nav a { margin-left: 1rem; }
+  /* Contact */
+  .contact{border:1px solid #1a1a30;border-radius:12px;padding:3rem;text-align:center;max-width:550px;margin:0 auto;background:#0a0a18}
+  .contact p{margin-bottom:.8rem;color:#888}
+  .contact a{color:#00d4aa;text-decoration:none;font-weight:600}
+  .contact a:hover{text-decoration:underline}
+
+  footer{text-align:center;padding:2rem 5%;border-top:1px solid #1a1a30;color:#444;font-size:.85rem}
+
+  @media(max-width:768px){
+    .hero h1{font-size:1.8rem}
+    nav .links a{margin-left:1rem;font-size:.8rem}
+    .partner-grid{gap:2rem}
   }
 </style>
 </head>
@@ -72,57 +72,99 @@
 
 <nav>
   <div class="logo">Autra<span>Group</span></div>
-  <div>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
+  <div class="links">
+    <a href="#platform">Platform</a>
+    <a href="#integrations">Integrations</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h1>Building <span>Tomorrow</span>, Today</h1>
-  <p>Autra Group Ltd is a forward-thinking company delivering innovative solutions across industries. We combine technology, expertise, and vision to drive growth.</p>
-  <a href="#contact" class="cta">Get in Touch</a>
+  <div class="badge">Hong Kong — Payment Solutions</div>
+  <h1>POS Platform<br>Built for <span class="green">Seamless Payments</span></h1>
+  <p>Autra Group provides a unified point-of-sale platform connecting merchants to Hong Kong's leading payment gateways — Wonder, KPay, and Yedpay — through a single integration.</p>
+  <a href="#contact" class="cta">Get Started</a>
 </section>
 
-<section id="services">
-  <h2>Our <span>Services</span></h2>
-  <div class="services">
-    <div class="service-card">
+<div class="partners">
+  <h3>Integrated Payment Partners</h3>
+  <div class="partner-grid">
+    <div class="partner"><span style="color:#00d4aa">W</span>ONDER</div>
+    <div class="partner"><span style="color:#00d4aa">K</span>PAY</div>
+    <div class="partner"><span style="color:#00d4aa">Y</span>EDPAY</div>
+  </div>
+</div>
+
+<section id="platform">
+  <h2>One <span class="green">Platform</span>, Every Payment</h2>
+  <p class="sub">Stop juggling terminals and dashboards. Autra unifies them all.</p>
+  <div class="features">
+    <div class="feature">
       <div class="icon"></div>
-      <h3>Technology Consulting</h3>
-      <p>Strategic guidance to modernize your infrastructure and accelerate digital transformation.</p>
+      <h3>Multi-Gateway POS</h3>
+      <p>Accept payments via Wonder, KPay, and Yedpay from a single terminal. No more switching between machines at the counter.</p>
     </div>
-    <div class="service-card">
+    <div class="feature">
       <div class="icon"></div>
-      <h3>Business Solutions</h3>
-      <p>End-to-end solutions tailored to your business needs, from operations to customer experience.</p>
+      <h3>Unified Dashboard</h3>
+      <p>Track transactions, settlements, and chargebacks across all three gateways in one real-time view. One login, complete visibility.</p>
     </div>
-    <div class="service-card">
+    <div class="feature">
       <div class="icon"></div>
-      <h3>Global Trade</h3>
-      <p>Connecting markets and facilitating international commerce with reliable partnership.</p>
+      <h3>Fast Onboarding</h3>
+      <p>Get merchants live in hours, not weeks. Automated KYC, pre-configured terminals, and instant gateway provisioning.</p>
+    </div>
+    <div class="feature">
+      <div class="icon"></div>
+      <h3>Settlement Automation</h3>
+      <p>Automated reconciliation across Wonder, KPay, and Yedpay. Daily reports, fee tracking, and payout verification — hands-free.</p>
+    </div>
+    <div class="feature">
+      <div class="icon"></div>
+      <h3>Hardware Agnostic</h3>
+      <p>Works with existing Android POS terminals, smart payment screens, and traditional EDC machines. No rip-and-replace.</p>
+    </div>
+    <div class="feature">
+      <div class="icon"></div>
+      <h3>HK Compliance Ready</h3>
+      <p>Built for Hong Kong's regulatory environment. PCI DSS aligned, HKMA-aware, with full audit trail and data residency.</p>
     </div>
   </div>
 </section>
 
-<section id="about">
-  <h2>About <span>Us</span></h2>
-  <p style="text-align:center;max-width:700px;margin:0 auto;color:#888;">
-    Autra Group Ltd is committed to excellence, innovation, and integrity. Founded with a vision to bridge gaps in emerging markets, we bring together a diverse team of professionals dedicated to delivering results that matter.
-  </p>
+<section id="integrations">
+  <h2>Gateway <span class="green">Integrations</span></h2>
+  <p class="sub">Deep native support for Hong Kong's top payment processors.</p>
+  <div class="integrations">
+    <div class="int-card">
+      <div class="name">Wonder</div>
+      <div class="desc">Full API integration — AlipayHK, WeChat Pay HK, UnionPay, Visa/Mastercard. Real-time transaction status and refund support.</div>
+      <div class="tag">Live</div>
+    </div>
+    <div class="int-card">
+      <div class="name">KPay</div>
+      <div class="desc">Direct merchant acquisition pipeline. Integrated onboarding, terminal provisioning, and settlement reporting via KPay API.</div>
+      <div class="tag">Live</div>
+    </div>
+    <div class="int-card">
+      <div class="name">Yedpay</div>
+      <div class="desc">End-to-end merchant services integration. Application processing, risk assessment, terminal deployment, and daily settlement.</div>
+      <div class="tag">Live</div>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-  <h2>Contact <span>Us</span></h2>
+  <h2>Get in <span class="green">Touch</span></h2>
   <div class="contact">
-    <p style="margin-bottom:1rem;">Email us at <a href="mailto:info@autragroupltd.com">info@autragroupltd.com</a></p>
-    <p style="color:#666;">&copy; 2026 Autra Group Ltd. All rights reserved.</p>
+    <p>Ready to unify your payment stack?</p>
+    <p>Email: <a href="mailto:info@autragroupltd.com">info@autragroupltd.com</a></p>
+    <p style="color:#555;font-size:.8rem;margin-top:1rem;">Autra Group Ltd — Hong Kong SAR</p>
   </div>
 </section>
 
 <footer>
-  Autra Group Ltd — Hong Kong
+  &copy; 2026 Autra Group Ltd. All rights reserved.
 </footer>
 
 </body>
