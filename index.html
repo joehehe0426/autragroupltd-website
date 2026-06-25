@@ -3,182 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autra Group Ltd — POS Payment Platform</title>
+<title>Autra Group — POS Payment Platform</title>
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#06060e;color:#d0d0d0;line-height:1.6}
-  
-  /* Navigation */
-  nav{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 5%;background:#080816;border-bottom:1px solid #1a1a30;position:sticky;top:0;z-index:100}
-  nav .logo{font-size:1.3rem;font-weight:700;color:#fff;letter-spacing:1px}
-  .logo span{background:linear-gradient(135deg,#00d4aa,#00a3ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-  nav .links a{color:#777;text-decoration:none;margin-left:2rem;font-size:.9rem;transition:color .2s}
-  nav .links a:hover{color:#00d4aa}
+:root{--gold:#c9a84c;--gold-light:#e0c878;--gold-dark:#9a7b2e;--bg:#08080c;--bg-card:#0e0e16;--text:#b8b8c0;--text-dim:#666;--border:rgba(201,168,76,.12)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 0%,rgba(201,168,76,.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(201,168,76,.02) 0%,transparent 50%);pointer-events:none;z-index:0}
 
-  /* Hero */
-  .hero{text-align:center;padding:8rem 5% 6rem;background:radial-gradient(ellipse at 50% 0%,#0d2040 0%,#06060e 70%)}
-  .hero .badge{display:inline-block;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);color:#00d4aa;padding:.3rem 1rem;border-radius:20px;font-size:.8rem;margin-bottom:1.5rem}
-  .hero h1{font-size:3rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:1rem}
-  .hero h1 .green{color:#00d4aa}
-  .hero p{font-size:1.15rem;color:#888;max-width:600px;margin:0 auto 2.5rem}
-  .hero .cta{display:inline-block;background:linear-gradient(135deg,#00d4aa,#00a3ff);color:#000;padding:.85rem 2.2rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s}
-  .hero .cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,170,.25)}
+/* Navigation */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 6%;position:fixed;top:0;width:100%;z-index:1000;transition:background .4s,backdrop-filter .4s}
+nav.scrolled{background:rgba(8,8,12,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:2px;text-transform:uppercase;position:relative}
+.logo span{background:linear-gradient(135deg,var(--gold-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav .links{display:flex;gap:2.5rem}
+nav .links a{color:var(--text-dim);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color .3s;position:relative}
+nav .links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+nav .links a:hover{color:var(--gold-light)}
+nav .links a:hover::after{width:100%}
 
-  /* Partners */
-  .partners{text-align:center;padding:4rem 5%;background:#080816}
-  .partners h3{color:#555;font-size:.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:2rem}
-  .partner-grid{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
-  .partner{color:#aaa;font-size:1.5rem;font-weight:700;letter-spacing:1px;opacity:.7;transition:opacity .3s}
-  .partner:hover{opacity:1;color:#00d4aa}
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 5%;position:relative;z-index:1}
+.hero .overline{font-size:.75rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:1.5rem;max-width:900px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero h1 .gold{background:linear-gradient(135deg,#e0c878 0%,#c9a84c 30%,#e0c878 60%,#9a7b2e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shimmer 3s linear infinite}
+.hero .subtitle{font-size:1.15rem;color:var(--text-dim);max-width:600px;margin-bottom:3rem;opacity:0;animation:fadeUp .8s .6s forwards}
+.hero .cta-group{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s .8s forwards}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#000;padding:.9rem 2.2rem;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.5px;transition:transform .3s,box-shadow .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.2)}
+.btn-ghost{border:1px solid var(--gold);color:var(--gold);padding:.9rem 2.2rem;border-radius:6px;font-weight:600;font-size:.9rem;text-decoration:none;letter-spacing:.5px;transition:all .3s;background:transparent}
+.btn-ghost:hover{background:rgba(201,168,76,.08);transform:translateY(-2px)}
 
-  /* Sections */
-  section{padding:5rem 5%;max-width:1100px;margin:0 auto}
-  section h2{font-size:2rem;color:#fff;margin-bottom:1rem;text-align:center}
-  section h2 .green{color:#00d4aa}
-  section .sub{text-align:center;color:#666;margin-bottom:3rem;font-size:.95rem}
+/* Scroll indicator */
+.scroll-indicator{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);opacity:0;animation:fadeUp .8s 1.2s forwards}
+.scroll-indicator .line{width:1px;height:40px;background:linear-gradient(transparent,var(--gold),transparent);margin:0 auto .5rem;animation:pulse 2s infinite}
+.scroll-indicator span{font-size:.65rem;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase}
 
-  /* Features */
-  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
-  .feature{border:1px solid #1a1a30;border-radius:12px;padding:2rem;background:#0a0a18;transition:border-color .3s,transform .3s}
-  .feature:hover{border-color:#00d4aa;transform:translateY(-4px)}
-  .feature .icon{font-size:2.5rem;margin-bottom:1rem}
-  .feature h3{color:#fff;margin-bottom:.6rem;font-size:1.1rem}
-  .feature p{color:#777;font-size:.9rem}
+/* Sections */
+section{padding:6rem 6%;position:relative;z-index:1}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header .overline{font-size:.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:1rem}
+.section-header h2{font-size:clamp(1.8rem,3vw,2.5rem);color:#fff;font-weight:700;margin-bottom:1rem}
+.section-header h2 .gold{color:var(--gold)}
+.section-header p{color:var(--text-dim);max-width:500px;margin:0 auto;font-size:.95rem}
 
-  /* Integration cards */
-  .integrations{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
-  .int-card{border:1px solid #1a1a30;border-radius:10px;padding:2rem;text-align:center;background:#0a0a18;transition:border-color .3s}
-  .int-card:hover{border-color:#00a3ff}
-  .int-card .name{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem}
-  .int-card .desc{color:#666;font-size:.85rem}
-  .int-card .tag{display:inline-block;margin-top:1rem;padding:.2rem .8rem;border-radius:4px;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;background:rgba(0,212,170,.1);color:#00d4aa}
+/* Partners */
+.partners-bar{background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 6%;text-align:center;position:relative;z-index:1}
+.partners-bar h3{font-size:.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--text-dim);margin-bottom:2rem}
+.partner-logos{display:flex;justify-content:center;align-items:center;gap:5rem;flex-wrap:wrap}
+.partner-logos .p{font-size:1.8rem;font-weight:800;color:#333;letter-spacing:3px;transition:color .4s;position:relative}
+.partner-logos .p:hover{color:var(--gold)}
+.partner-logos .p .accent{color:var(--gold);transition:color .4s}
+.partner-logos .p:hover .accent{color:#fff}
 
-  /* Contact */
-  .contact{border:1px solid #1a1a30;border-radius:12px;padding:3rem;text-align:center;max-width:550px;margin:0 auto;background:#0a0a18}
-  .contact p{margin-bottom:.8rem;color:#888}
-  .contact a{color:#00d4aa;text-decoration:none;font-weight:600}
-  .contact a:hover{text-decoration:underline}
+/* Markets */
+.markets{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:2rem 0}
+.market-tag{font-size:.8rem;color:var(--text-dim);letter-spacing:2px;padding:.3rem 0;transition:color .3s}
+.market-tag:hover{color:var(--gold)}
+.market-tag::before{content:'— ';color:var(--gold);opacity:0;transition:opacity .3s}
+.market-tag:hover::before{opacity:1}
 
-  footer{text-align:center;padding:2rem 5%;border-top:1px solid #1a1a30;color:#444;font-size:.85rem}
+/* Features grid */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.f-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:2.5rem;transition:border-color .4s,transform .4s;position:relative;overflow:hidden}
+.f-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.f-card:hover{border-color:rgba(201,168,76,.25);transform:translateY(-6px)}
+.f-card:hover::before{opacity:1}
+.f-card .num{font-size:.7rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem}
+.f-card h3{color:#fff;font-size:1.15rem;margin-bottom:.8rem;font-weight:600}
+.f-card p{color:var(--text-dim);font-size:.9rem;line-height:1.7}
 
-  @media(max-width:768px){
-    .hero h1{font-size:1.8rem}
-    nav .links a{margin-left:1rem;font-size:.8rem}
-    .partner-grid{gap:2rem}
-  }
+/* Integrations */
+.integrations{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
+.int-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:3rem 2.5rem;text-align:center;transition:all .4s;position:relative}
+.int-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.int-card .int-icon{font-size:3rem;margin-bottom:1.5rem;filter:grayscale(1);opacity:.3;transition:all .4s}
+.int-card:hover .int-icon{filter:grayscale(0);opacity:1}
+.int-card h3{color:#fff;font-size:1.4rem;margin-bottom:.8rem}
+.int-card p{color:var(--text-dim);font-size:.85rem;line-height:1.7}
+.int-card .badge{display:inline-block;margin-top:1.5rem;padding:.3rem 1rem;border:1px solid rgba(201,168,76,.3);border-radius:20px;font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold)}
+
+/* Stats */
+.stats{padding:5rem 6%;background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.stat-grid{display:flex;justify-content:center;gap:6rem;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.stat{text-align:center}
+.stat .number{font-size:3rem;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.stat .number .gold{color:var(--gold)}
+.stat .label{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-top:.5rem}
+
+/* CTA */
+.cta-section{text-align:center;padding:8rem 6% 6rem;position:relative;z-index:1}
+.cta-section h2{font-size:clamp(1.8rem,3vw,2.5rem);color:#fff;margin-bottom:1.5rem}
+.cta-section h2 .gold{color:var(--gold)}
+.cta-section p{color:var(--text-dim);margin-bottom:2.5rem}
+.cta-section .email{color:var(--gold);font-size:1.2rem;text-decoration:none;font-weight:600;transition:color .3s}
+.cta-section .email:hover{color:var(--gold-light)}
+
+/* Footer */
+footer{text-align:center;padding:3rem 6%;border-top:1px solid var(--border);color:var(--text-dim);font-size:.8rem;position:relative;z-index:1}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* Responsive */
+@media(max-width:768px){
+  nav{padding:1rem 5%}
+  nav .links{display:none}
+  .partner-logos{gap:2.5rem}
+  .partner-logos .p{font-size:1.3rem}
+  .features{grid-template-columns:1fr}
+  .integrations{grid-template-columns:1fr}
+  .stat-grid{gap:3rem}
+  .stat .number{font-size:2rem}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">Autra<span>Group</span></div>
+<nav id="nav">
+  <div class="logo">A<span>u</span>tra</div>
   <div class="links">
     <a href="#platform">Platform</a>
     <a href="#integrations">Integrations</a>
+    <a href="#markets">Markets</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="badge">Asia-Pacific — Payment Solutions</div>
-  <h1>POS Platform<br>Built for <span class="green">Seamless Payments</span></h1>
-  <p>Autra Group provides a unified point-of-sale platform connecting merchants across Asia-Pacific to leading payment gateways — through a single integration.</p>
-  <a href="#contact" class="cta">Get Started</a>
+  <div class="overline">Asia-Pacific · Payment Infrastructure</div>
+  <h1>One Platform.<br>Every <span class="gold">Payment</span>. Every <span class="gold">Market</span>.</h1>
+  <p class="subtitle">Autra Group unifies POS terminals, payment gateways, and merchant services across Asia-Pacific — Wonder, KPay, Yedpay, all through a single integration.</p>
+  <div class="cta-group">
+    <a href="#contact" class="btn-primary">Get Started</a>
+    <a href="#platform" class="btn-ghost">Explore Platform</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="line"></div>
+    <span>Scroll</span>
+  </div>
 </section>
 
-<div class="partners">
+<div class="partners-bar">
   <h3>Integrated Payment Partners</h3>
-  <div class="partner-grid">
-    <div class="partner"><span style="color:#00d4aa">W</span>ONDER</div>
-    <div class="partner"><span style="color:#00d4aa">K</span>PAY</div>
-    <div class="partner"><span style="color:#00d4aa">Y</span>EDPAY</div>
-  </div>
-</div>
-
-<div class="partners" style="background:#06060e;border-bottom:1px solid #1a1a30">
-  <h3>Serving Markets Across Asia-Pacific</h3>
-  <div class="partner-grid" style="gap:2rem">
-    <div style="color:#888;font-size:.85rem">Hong Kong</div>
-    <div style="color:#888;font-size:.85rem">Singapore</div>
-    <div style="color:#888;font-size:.85rem">Taiwan</div>
-    <div style="color:#888;font-size:.85rem">Japan</div>
-    <div style="color:#888;font-size:.85rem">Malaysia</div>
-    <div style="color:#888;font-size:.85rem">Macau</div>
-    <div style="color:#888;font-size:.85rem">Shenzhen</div>
+  <div class="partner-logos">
+    <div class="p"><span class="accent">W</span>ONDER</div>
+    <div class="p"><span class="accent">K</span>PAY</div>
+    <div class="p"><span class="accent">Y</span>EDPAY</div>
   </div>
 </div>
 
 <section id="platform">
-  <h2>One <span class="green">Platform</span>, Every Payment</h2>
-  <p class="sub">Stop juggling terminals and dashboards. Autra unifies them all.</p>
+  <div class="section-header">
+    <div class="overline">Platform</div>
+    <h2>Designed for <span class="gold">Scale</span></h2>
+    <p>Stop managing terminals. Start running your business. Autra handles the complexity.</p>
+  </div>
   <div class="features">
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>Multi-Gateway POS</h3>
-      <p>Accept payments via Wonder, KPay, and Yedpay from a single terminal. No more switching between machines at the counter.</p>
+    <div class="f-card">
+      <div class="num">01</div>
+      <h3>Multi-Gateway Terminal</h3>
+      <p>Accept Wonder, KPay, and Yedpay from one POS. No switching terminals. No reconciling three dashboards. One screen, every payment method.</p>
     </div>
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>Unified Dashboard</h3>
-      <p>Track transactions, settlements, and chargebacks across all three gateways in one real-time view. One login, complete visibility.</p>
+    <div class="f-card">
+      <div class="num">02</div>
+      <h3>Unified Settlement</h3>
+      <p>Daily reconciliation across all gateways. Fees, chargebacks, payouts — tracked and verified automatically. Close your books faster.</p>
     </div>
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>Fast Onboarding</h3>
-      <p>Get merchants live in hours, not weeks. Automated KYC, pre-configured terminals, and instant gateway provisioning.</p>
+    <div class="f-card">
+      <div class="num">03</div>
+      <h3>Rapid Merchant Onboarding</h3>
+      <p>KYC, terminal provisioning, gateway activation — hours, not weeks. Get merchants transacting on day one.</p>
     </div>
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>Settlement Automation</h3>
-      <p>Automated reconciliation across Wonder, KPay, and Yedpay. Daily reports, fee tracking, and payout verification — hands-free.</p>
+    <div class="f-card">
+      <div class="num">04</div>
+      <h3>APAC Coverage</h3>
+      <p>Hong Kong, Singapore, Taiwan, Japan, Malaysia, Macau, Shenzhen. One platform, seven markets, local compliance in every jurisdiction.</p>
     </div>
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>Hardware Agnostic</h3>
-      <p>Works with existing Android POS terminals, smart payment screens, and traditional EDC machines. No rip-and-replace.</p>
+    <div class="f-card">
+      <div class="num">05</div>
+      <h3>Hardware Freedom</h3>
+      <p>Android POS, smart terminals, EDC machines — Autra works with what you already have. No forced hardware upgrades.</p>
     </div>
-    <div class="feature">
-      <div class="icon"></div>
-      <h3>HK Compliance Ready</h3>
-      <p>Built for Hong Kong's regulatory environment. PCI DSS aligned, HKMA-aware, with full audit trail and data residency.</p>
+    <div class="f-card">
+      <div class="num">06</div>
+      <h3>Real-Time Analytics</h3>
+      <p>Transaction volumes, gateway performance, merchant health — live dashboard with drill-down to individual transactions.</p>
     </div>
+  </div>
+</section>
+
+<section class="stats" id="markets">
+  <div class="section-header">
+    <div class="overline">Coverage</div>
+    <h2>Seven <span class="gold">Markets</span></h2>
+    <p>Operating across Asia-Pacific's most dynamic economies</p>
+  </div>
+  <div class="markets">
+    <span class="market-tag">Hong Kong</span>
+    <span class="market-tag">Singapore</span>
+    <span class="market-tag">Taiwan</span>
+    <span class="market-tag">Japan</span>
+    <span class="market-tag">Malaysia</span>
+    <span class="market-tag">Macau</span>
+    <span class="market-tag">Shenzhen</span>
   </div>
 </section>
 
 <section id="integrations">
-  <h2>Gateway <span class="green">Integrations</span></h2>
-  <p class="sub">Deep native support for Hong Kong's top payment processors.</p>
+  <div class="section-header">
+    <div class="overline">Integrations</div>
+    <h2>Native Gateway <span class="gold">Support</span></h2>
+    <p>Deep, production-grade integrations with APAC's leading payment processors</p>
+  </div>
   <div class="integrations">
     <div class="int-card">
-      <div class="name">Wonder</div>
-      <div class="desc">Full API integration — AlipayHK, WeChat Pay HK, UnionPay, Visa/Mastercard. Real-time transaction status and refund support.</div>
-      <div class="tag">Live</div>
+      <div class="int-icon">W</div>
+      <h3>Wonder</h3>
+      <p>AlipayHK, WeChat Pay HK, UnionPay, Visa, Mastercard. Full API with real-time transaction status, refunds, and settlement reporting.</p>
+      <div class="badge">Production</div>
     </div>
     <div class="int-card">
-      <div class="name">KPay</div>
-      <div class="desc">Direct merchant acquisition pipeline. Integrated onboarding, terminal provisioning, and settlement reporting via KPay API.</div>
-      <div class="tag">Live</div>
+      <div class="int-icon">K</div>
+      <h3>KPay</h3>
+      <p>Direct merchant acquisition. Integrated onboarding, automated terminal provisioning, daily settlement via KPay merchant API.</p>
+      <div class="badge">Production</div>
     </div>
     <div class="int-card">
-      <div class="name">Yedpay</div>
-      <div class="desc">End-to-end merchant services integration. Application processing, risk assessment, terminal deployment, and daily settlement.</div>
-      <div class="tag">Live</div>
+      <div class="int-icon">Y</div>
+      <h3>Yedpay</h3>
+      <p>End-to-end merchant services. Application processing, risk assessment, terminal deployment, daily reconciliation.</p>
+      <div class="badge">Production</div>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Get in <span class="green">Touch</span></h2>
-  <div class="contact">
-    <p>Ready to unify your payment stack?</p>
-    <p>Email: <a href="mailto:info@autragroupltd.com">info@autragroupltd.com</a></p>
-    <p style="color:#555;font-size:.8rem;margin-top:1rem;">Autra Group Ltd — Hong Kong SAR</p>
+<section class="cta-section" id="contact">
+  <div class="section-header">
+    <div class="overline">Contact</div>
+    <h2>Ready to <span class="gold">Unify</span> Your Payments?</h2>
+    <p>One conversation. One integration. Every market.</p>
   </div>
+  <a href="mailto:info@autragroupltd.com" class="email">info@autragroupltd.com</a>
 </section>
 
 <footer>
-  &copy; 2026 Autra Group Ltd. All rights reserved.
+  &copy; 2026 Autra Group Ltd &mdash; Hong Kong SAR
 </footer>
 
+<script>
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)
+})
+
+// Intersection Observer for reveal animations
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.style.opacity='1'})
+},{threshold:.15})
+document.querySelectorAll('.f-card,.int-card,.stat,.market-tag').forEach(el=>{
+  el.style.opacity='0';el.style.transition='opacity .6s,transform .6s'
+  observer.observe(el)
+})
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault()
+    document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})
+  })
+})
+</script>
 </body>
 </html>
