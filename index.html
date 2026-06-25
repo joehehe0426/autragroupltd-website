@@ -109,6 +109,19 @@ section{padding:6rem 6%;position:relative;z-index:1}
 
 footer{text-align:center;padding:3rem 6%;border-top:1px solid var(--border);color:var(--dim);font-size:.8rem;position:relative;z-index:1}
 
+/* Payment Methods Bar */
+.payments-bar{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 6% 2rem;text-align:center;position:relative;z-index:1}
+.payments-bar h3{font-size:.65rem;text-transform:uppercase;letter-spacing:3px;color:var(--dim);margin-bottom:2rem}
+.payments-grid{max-width:1100px;margin:0 auto}
+.pay-row{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.pay-logo{font-size:.75rem;font-weight:700;letter-spacing:2px;color:#3a3a4a;transition:color .4s;filter:grayscale(1);opacity:.5;transition:all .4s}
+.pay-logo img{filter:grayscale(1) brightness(.5);transition:all .4s;vertical-align:middle}
+.pay-logo:hover{opacity:.85;filter:grayscale(0)}
+.pay-logo:hover img{filter:grayscale(0) brightness(1)}
+.pay-logo.partner{font-size:.85rem}
+.pay-logo.partner:hover{color:var(--gold-light)}
+@media(max-width:768px){.pay-row{gap:1.5rem}.pay-logo{font-size:.7rem}}
+
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{opacity:.2}50%{opacity:.8}}
 
@@ -222,6 +235,35 @@ footer{text-align:center;padding:3rem 6%;border-top:1px solid var(--border);colo
   </div>
   <a href="mailto:info@autragroupltd.com" class="emaillink">info@autragroupltd.com</a>
 </section>
+
+<!-- Payment Methods -->
+<div class="payments-bar">
+  <h3>Accepted Payment Methods</h3>
+  <div class="payments-grid">
+    <!-- Row 1: Card Networks -->
+    <div class="pay-row">
+      <div class="pay-logo"><img src="visa-mc-amex.png" alt="Visa Mastercard AMEX" style="height:24px"></div>
+      <div class="pay-logo">UnionPay</div>
+      <div class="pay-logo">UnionPay App</div>
+    </div>
+    <!-- Row 2: E-Wallets -->
+    <div class="pay-row">
+      <div class="pay-logo">Alipay</div>
+      <div class="pay-logo">Alipay HK</div>
+      <div class="pay-logo">WeChat Pay</div>
+      <div class="pay-logo"><img src="wechatpay-hk.png" alt="WeChat Pay HK" style="height:20px"></div>
+      <div class="pay-logo"><img src="payme.png" alt="PayMe" style="height:20px"></div>
+    </div>
+    <!-- Row 3: Mobile + Partners -->
+    <div class="pay-row">
+      <div class="pay-logo"><img src="apple-pay.png" alt="Apple Pay" style="height:20px"></div>
+      <div class="pay-logo"><img src="google-pay.png" alt="Google Pay" style="height:20px"></div>
+      <div class="pay-logo partner">WONDER</div>
+      <div class="pay-logo partner">KPAY</div>
+      <div class="pay-logo"><img src="yedpay-logo.png" alt="Yedpay" style="height:18px"></div>
+    </div>
+  </div>
+</div>
 
 <footer>&copy; 2026 Autra Group Ltd &mdash; Hong Kong SAR</footer>
 
