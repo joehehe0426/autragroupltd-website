@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autra Group Ltd</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    line-height: 1.6;
+  }
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 5%; background: #0d0d15;
+    border-bottom: 1px solid #1a1a2e;
+    position: sticky; top: 0; z-index: 100;
+  }
+  nav .logo { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+  nav .logo span { color: #6c63ff; }
+  nav a { color: #999; text-decoration: none; margin-left: 2rem; transition: color 0.2s; }
+  nav a:hover { color: #6c63ff; }
+
+  .hero {
+    text-align: center; padding: 8rem 5% 6rem;
+    background: linear-gradient(135deg, #0d0d15 0%, #1a1040 100%);
+  }
+  .hero h1 { font-size: 3.2rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
+  .hero h1 span { color: #6c63ff; }
+  .hero p { font-size: 1.2rem; color: #888; max-width: 600px; margin: 0 auto 2rem; }
+  .hero .cta {
+    display: inline-block; background: #6c63ff; color: #fff; padding: 0.8rem 2rem;
+    border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s;
+  }
+  .hero .cta:hover { background: #5a52d5; }
+
+  section { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; }
+  section h2 { font-size: 2rem; color: #fff; margin-bottom: 2rem; text-align: center; }
+  section h2 span { color: #6c63ff; }
+
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .service-card {
+    background: #111122; border: 1px solid #1a1a2e; border-radius: 12px;
+    padding: 2rem; transition: border-color 0.3s, transform 0.3s;
+  }
+  .service-card:hover { border-color: #6c63ff; transform: translateY(-4px); }
+  .service-card h3 { color: #fff; margin-bottom: 0.8rem; }
+  .service-card p { color: #888; font-size: 0.95rem; }
+  .service-card .icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  .contact {
+    background: #111122; border: 1px solid #1a1a2e; border-radius: 12px;
+    padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto;
+  }
+  .contact a { color: #6c63ff; text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center; padding: 2rem 5%;
+    border-top: 1px solid #1a1a2e; color: #666; font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    nav a { margin-left: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Autra<span>Group</span></div>
+  <div>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Building <span>Tomorrow</span>, Today</h1>
+  <p>Autra Group Ltd is a forward-thinking company delivering innovative solutions across industries. We combine technology, expertise, and vision to drive growth.</p>
+  <a href="#contact" class="cta">Get in Touch</a>
+</section>
+
+<section id="services">
+  <h2>Our <span>Services</span></h2>
+  <div class="services">
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>Technology Consulting</h3>
+      <p>Strategic guidance to modernize your infrastructure and accelerate digital transformation.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>Business Solutions</h3>
+      <p>End-to-end solutions tailored to your business needs, from operations to customer experience.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon"></div>
+      <h3>Global Trade</h3>
+      <p>Connecting markets and facilitating international commerce with reliable partnership.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About <span>Us</span></h2>
+  <p style="text-align:center;max-width:700px;margin:0 auto;color:#888;">
+    Autra Group Ltd is committed to excellence, innovation, and integrity. Founded with a vision to bridge gaps in emerging markets, we bring together a diverse team of professionals dedicated to delivering results that matter.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contact <span>Us</span></h2>
+  <div class="contact">
+    <p style="margin-bottom:1rem;">Email us at <a href="mailto:info@autragroupltd.com">info@autragroupltd.com</a></p>
+    <p style="color:#666;">&copy; 2026 Autra Group Ltd. All rights reserved.</p>
+  </div>
+</section>
+
+<footer>
+  Autra Group Ltd — Hong Kong
+</footer>
+
+</body>
+</html>
