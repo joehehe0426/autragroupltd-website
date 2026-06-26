@@ -110,12 +110,33 @@ section{padding:7rem 6%;position:relative;z-index:1}
 
 footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:var(--dim);font-size:.75rem;z-index:1;position:relative}
 
-/* Animations */
+|/* Animations */
 @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Contact Form */
+.form-wrap{max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--b);border-radius:12px;padding:3rem}
+.form-group{margin-bottom:1.5rem}
+.form-group label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:.5rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.9rem 1rem;background:rgba(10,10,30,.6);border:1px solid var(--b);border-radius:6px;color:#fff;font-size:.9rem;font-family:inherit;transition:.3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--g2);background:rgba(10,10,30,.9);box-shadow:0 0 20px rgba(200,160,60,.06)}
+.form-group textarea{min-height:120px;resize:vertical}
+.form-group select{color:var(--dim);cursor:pointer}
+.form-group select option{background:var(--bg2);color:#fff}
+.form-group .honey{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.form-submit{width:100%;padding:1rem;background:linear-gradient(135deg,var(--g2),#a07828);color:#0a0a0a;font-weight:700;font-size:.9rem;letter-spacing:2px;border:none;border-radius:6px;cursor:pointer;transition:.3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,160,60,.25)}
+.form-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.form-msg{padding:.8rem 1rem;border-radius:6px;margin-bottom:1.5rem;font-size:.85rem;display:none}
+.form-msg.success{display:block;background:rgba(60,200,80,.08);border:1px solid rgba(60,200,80,.2);color:#8c8}
+.form-msg.error{display:block;background:rgba(200,60,60,.08);border:1px solid rgba(200,60,60,.2);color:#c88}
+.form-sent{display:none;text-align:center;padding:2rem}
+.form-sent .icon{font-size:3rem;margin-bottom:1rem}
+.form-sent h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
+.form-sent p{color:var(--dim);font-size:.9rem}
 
 /* Mobile-only line break */
 .mob-br{display:none}
@@ -401,7 +422,59 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   <div class="s-hdr"><div class="tag">Contact</div></div>
   <h2>Let's Discuss Your <span class="goldtxt">Markets</span></h2>
   <p>One conversation, one integration, every market. Tell us where you operate and we'll show you how we can help.</p>
-  <a href="mailto:info@autragroupltd.com" class="email">info@autragroupltd.com</a>
+  
+  <div class="form-wrap" id="form-wrap">
+    <div id="form-msg" class="form-msg"></div>
+    <form id="contact-form" action="/contact" method="POST">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Your business name">
+      </div>
+      <div class="form-group">
+        <label for="market">Primary Market</label>
+        <select id="market" name="market">
+          <option value="">Select a market...</option>
+          <option value="Hong Kong">Hong Kong</option>
+          <option value="Singapore">Singapore</option>
+          <option value="Taiwan">Taiwan</option>
+          <option value="Japan">Japan</option>
+          <option value="Malaysia">Malaysia</option>
+          <option value="Macau">Macau</option>
+          <option value="Shenzhen">Shenzhen</option>
+          <option value="Multiple">Multiple Markets</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Tell us about your payment needs..."></textarea>
+      </div>
+      <!-- Honeypot — invisible to humans -->
+      <div class="honey">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="_t" id="_t" value="">
+      <button type="submit" class="form-submit" id="form-btn">Send Message</button>
+    </form>
+    <div class="form-sent" id="form-sent">
+      <div class="icon">✓</div>
+      <h3>Message Sent</h3>
+      <p>Thank you for reaching out. Our team will respond within 24 hours.</p>
+    </div>
+  </div>
+  
+  <p style="margin-top:2rem;font-size:.8rem;color:var(--dim)">
+    Or email us directly: <a href="mailto:info@autragroupltd.com" style="color:var(--g2);text-decoration:none">info@autragroupltd.com</a>
+  </p>
 </section>
 
 <footer>&copy; 2026 Autra Group Ltd — Hong Kong SAR</footer>
@@ -493,6 +566,49 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 
 // Language switcher - close on outside click
 document.addEventListener('click',function(e){var dd=document.getElementById('lang-dd');if(dd&&!e.target.closest('.lang-wrap'))dd.classList.remove('show')});
+
+// Contact form handler
+(function(){
+  var form=document.getElementById('contact-form');
+  if(!form)return;
+  var btn=document.getElementById('form-btn');
+  var msg=document.getElementById('form-msg');
+  var sent=document.getElementById('form-sent');
+  var tInput=document.getElementById('_t');
+  
+  // Set timestamp when page loads (for bot detection)
+  tInput.value=Date.now();
+  
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    msg.style.display='none';
+    btn.disabled=true;
+    btn.textContent='Sending...';
+    
+    var data=new FormData(form);
+    fetch(form.action,{method:'POST',body:data})
+      .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
+      .then(function(res){
+        if(res.ok&&res.data.success){
+          form.style.display='none';
+          sent.style.display='block';
+        }else{
+          msg.textContent=res.data.error||'Something went wrong. Please try again.';
+          msg.className='form-msg error';
+          msg.style.display='block';
+          btn.disabled=false;
+          btn.textContent='Send Message';
+        }
+      })
+      .catch(function(){
+        msg.textContent='Network error. Please try again or email us directly.';
+        msg.className='form-msg error';
+        msg.style.display='block';
+        btn.disabled=false;
+        btn.textContent='Send Message';
+      });
+  });
+})();
 </script>
 </body>
 </html>
