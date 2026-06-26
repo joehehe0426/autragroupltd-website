@@ -5,73 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Autra Group — The Payment Platform for Asia-Pacific</title>
 <style>
-:root{--g1:#f2d680;--g2:#d4a843;--g3:#c08060;--g4:#b8923c;--bg:#050510;--bg2:#0a0a1a;--card:#0d0d22;--txt:#c0c0d0;--dim:#606080;--b:rgba(200,160,60,.08)}
+:root{--nb:#0b1628;--nb2:#0e1d38;--nb3:#12254a;--c1:#1a73e8;--c2:#3b82f6;--c3:#60a5fa;--c4:#93c5fd;--bg:#060e1a;--bg2:#0a1628;--card:#0d1f3c;--txt:#d0dce8;--dim:#6a80a0;--b:rgba(59,130,246,.08);--g:rgba(59,130,246,.15)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
 
-/* Gold particle canvas */
+/* Particle canvas (blue glow) */
 #particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
 /* Nav */
 nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 6%;position:fixed;top:0;width:100%;z-index:1000;transition:.5s}
-nav.scrolled{background:rgba(5,5,16,.9);backdrop-filter:blur(30px);border-bottom:1px solid var(--b)}
-.logo{font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:4px}
-.logo .l1{color:var(--g1)}.logo .l2{color:var(--g3)}.logo .l3{color:var(--g4)}
+nav.scrolled{background:rgba(6,14,26,.92);backdrop-filter:blur(30px);border-bottom:1px solid var(--b)}
+.logo{font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:4px;display:flex;align-items:center;gap:8px}
+.logo svg{width:28px;height:28px}
+.logo .l2{color:var(--c2)}
 nav .links{display:flex;gap:2.5rem}
 nav .links a{color:var(--dim);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:.3s}
-nav .links a:hover{color:var(--g1)}
+nav .links a:hover{color:var(--c3)}
 
 /* Hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 5%;position:relative;z-index:1}
-.hero .chip{display:inline-block;padding:.35rem 1.2rem;border:1px solid rgba(200,160,60,.3);border-radius:50px;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--g2);margin-bottom:2.5rem;backdrop-filter:blur(10px)}
-.hero h1{font-size:clamp(3rem,7vw,6rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:1.8rem;max-width:950px;letter-spacing:-1px}
-.hero h1 .glow{background:linear-gradient(135deg,#f8e8a0 0%,#d4a843 30%,#c08060 70%,#f8e8a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shimmer 4s linear infinite}
-.hero p{font-size:1.15rem;color:var(--dim);max-width:580px;margin-bottom:3rem;line-height:1.8}
-.btn-gold{display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,var(--g2),#a07828);color:#0a0a0a;font-weight:700;font-size:.9rem;letter-spacing:1px;border-radius:4px;text-decoration:none;transition:.3s;position:relative;overflow:hidden}
+.hero .chip{display:inline-block;padding:.35rem 1.2rem;border:1px solid rgba(59,130,246,.25);border-radius:50px;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--c2);margin-bottom:2.5rem;backdrop-filter:blur(10px)}
+.hero h1{font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:1.8rem;max-width:950px;letter-spacing:-1px}
+.hero h1 .glow{background:linear-gradient(135deg,#60a5fa 0%,#3b82f6 40%,#1a73e8 70%,#93c5fd 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shimmer 4s linear infinite}
+.hero p{font-size:1.15rem;color:var(--dim);max-width:620px;margin-bottom:3rem;line-height:1.8}
+.btn-pri{display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,var(--c2),var(--c1));color:#fff;font-weight:700;font-size:.9rem;letter-spacing:1px;border-radius:6px;text-decoration:none;transition:.3s}
+.btn-pri:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(59,130,246,.3)}
+.btn-outline{display:inline-block;padding:1rem 2.5rem;border:1px solid var(--c2);color:var(--c3);font-weight:600;font-size:.9rem;letter-spacing:1px;border-radius:6px;text-decoration:none;transition:.3s}
+.btn-outline:hover{background:rgba(59,130,246,.06);transform:translateY(-3px)}
 .hero .ctas{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
-.btn-outline{display:inline-block;padding:1rem 2.5rem;border:1px solid var(--g2);color:var(--g1);font-weight:600;font-size:.9rem;letter-spacing:1px;border-radius:4px;text-decoration:none;transition:.3s}
-.btn-outline:hover{background:rgba(200,160,60,.06);transform:translateY(-3px)}
- 
+
 /* Sections */
 section{padding:7rem 6%;position:relative;z-index:1}
 .s-hdr{text-align:center;margin-bottom:4rem}
-.s-hdr .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:5px;background:linear-gradient(90deg,var(--g1),var(--g3),var(--g4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+.s-hdr .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:5px;background:linear-gradient(90deg,var(--c1),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
 .s-hdr h2{font-size:clamp(2rem,4vw,3rem);color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.5px}
-.s-hdr h2 em{font-style:normal;color:var(--g2)}
+.s-hdr h2 em{font-style:normal;color:var(--c3)}
 .s-hdr p{color:var(--dim);max-width:500px;margin:0 auto;font-size:.95rem}
 
 /* Numbers */
 .bignums{display:flex;justify-content:center;gap:5rem;flex-wrap:wrap;padding:5rem 6%;background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);z-index:1;position:relative}
 .bignums .bn{text-align:center}
 .bignums .bn .n{font-size:3.5rem;font-weight:900;color:#fff;letter-spacing:-2px;font-variant-numeric:tabular-nums}
-.bignums .bn .n.c1{color:var(--g1)}.bignums .bn .n.c2{color:var(--g3)}.bignums .bn .n.c3{color:var(--g2)}.bignums .bn .n.c4{color:var(--g4)}
+.bignums .bn .n.c1{color:var(--c1)}.bignums .bn .n.c2{color:var(--c2)}.bignums .bn .n.c3{color:var(--c3)}.bignums .bn .n.c4{color:var(--c4)}
 .bignums .bn .l{font-size:.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--dim);margin-top:.4rem}
 
 /* Partners */
 .partners-strip{background:var(--bg2);border-bottom:1px solid var(--b);padding:3rem 6%;text-align:center;z-index:1;position:relative}
 .partners-strip .plabel{font-size:.6rem;text-transform:uppercase;letter-spacing:4px;color:var(--dim);margin-bottom:2rem}
 .partners-strip .plist{display:flex;justify-content:center;align-items:center;gap:5rem;flex-wrap:wrap}
-.partners-strip .p{font-size:1.6rem;font-weight:900;color:#1a1a35;letter-spacing:4px;transition:.5s;cursor:default}
-.partners-strip .p:hover{color:var(--g1)}
-.partners-strip .p .hh{color:var(--g2);transition:.5s}
+.partners-strip .p{font-size:1.6rem;font-weight:900;color:#1a2a45;letter-spacing:4px;transition:.5s;cursor:default}
+.partners-strip .p:hover{color:var(--c3)}
+.partners-strip .p .hh{color:var(--c2);transition:.5s}
 .partners-strip .p:hover .hh{color:#fff}
 
-/* Feature Grid */
+/* Feature Grid with icons */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;max-width:1300px;margin:0 auto}
-.card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:2.8rem;transition:.5s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(200,160,60,.08) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.card{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:2.8rem;transition:.5s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(59,130,246,.08) 0%,transparent 60%);opacity:0;transition:opacity .4s}
 .card:hover::before{opacity:1}
-.card:hover{border-color:rgba(200,160,60,.2);transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.card .no{font-size:.6rem;letter-spacing:4px;margin-bottom:1.5rem}
-.card .no.n1{color:var(--g1)}.card .no.n2{color:var(--g3)}.card .no.n3{color:var(--g2)}.card .no.n4{color:var(--g4)}
+.card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.card .icon{width:48px;height:48px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.12)}
+.card .icon svg{width:24px;height:24px}
+.card .no{font-size:.6rem;letter-spacing:4px;margin-bottom:1rem}
+.card .no.n1{color:var(--c1)}.card .no.n2{color:var(--c2)}.card .no.n3{color:var(--c3)}.card .no.n4{color:var(--c1)}
 .card h3{color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:.8rem}
 .card p{color:var(--dim);font-size:.9rem;line-height:1.75}
 
+/* Comparison Table */
+.compare-sec{background:var(--bg2);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:5rem 6%;z-index:1;position:relative}
+.compare-wrap{max-width:1000px;margin:0 auto;overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.compare-table th{text-align:center;padding:1.2rem 1rem;font-weight:700;font-size:.8rem;letter-spacing:2px;text-transform:uppercase}
+.compare-table th:first-child{text-align:left;color:var(--dim)}
+.compare-table th:nth-child(2){background:rgba(59,130,246,.06);color:var(--dim)}
+.compare-table th:nth-child(3){background:rgba(59,130,246,.12);color:var(--c3)}
+.compare-table td{padding:1rem;border-bottom:1px solid var(--b);text-align:center;color:var(--txt)}
+.compare-table td:first-child{text-align:left;color:var(--dim);font-weight:500}
+.compare-table td:nth-child(2){background:rgba(59,130,246,.03)}
+.compare-table td:nth-child(3){background:rgba(59,130,246,.06)}
+.compare-table .badge{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.7rem;font-weight:600}
+.compare-table .badge.ok{background:rgba(59,130,246,.12);color:var(--c3)}
+.compare-table .badge.x{background:rgba(239,68,68,.1);color:#f87171}
+.compare-table .badge.yes{background:rgba(34,197,94,.1);color:#4ade80}
+.compare-table tr:last-child td{border-bottom:none}
+.comp-hdr{text-align:center;margin-bottom:3rem}
+.comp-hdr .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:5px;background:linear-gradient(90deg,var(--c1),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+.comp-hdr h2{font-size:clamp(2rem,4vw,3rem);color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.5px}
+.comp-hdr p{color:var(--dim);max-width:600px;margin:0 auto;font-size:.95rem}
+
 /* Integration cards */
 .int-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
-.int-card{background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden;transition:.5s}
-.int-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4);border-color:rgba(200,160,60,.2)}
+.int-card{background:var(--card);border:1px solid var(--b);border-radius:12px;overflow:hidden;transition:.5s}
+.int-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4);border-color:rgba(59,130,246,.2)}
 .int-card .img-wrap{height:220px;overflow:hidden;position:relative}
 .int-card .img-wrap img{width:100%;height:100%;object-fit:cover;transition:.8s;filter:brightness(.5) saturate(.6)}
 .int-card:hover .img-wrap img{transform:scale(1.08);filter:brightness(.85) saturate(1)}
@@ -79,13 +105,13 @@ section{padding:7rem 6%;position:relative;z-index:1}
 .int-card .body{padding:2rem;margin-top:-40px;position:relative;z-index:1}
 .int-card .body h3{color:#fff;font-size:1.4rem;font-weight:700;margin-bottom:.6rem}
 .int-card .body p{color:var(--dim);font-size:.85rem;line-height:1.7;margin-bottom:1.2rem}
-.int-card .body .live{display:inline-block;padding:.2rem .9rem;border:1px solid rgba(200,160,60,.25);border-radius:20px;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--g2)}
+.int-card .body .live{display:inline-block;padding:.2rem .9rem;border:1px solid rgba(59,130,246,.2);border-radius:20px;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--c3)}
 
 /* Markets */
 .market-strip{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;padding:1rem 0}
 .market-strip span{font-size:.8rem;color:var(--dim);letter-spacing:3px;transition:.3s;cursor:default;position:relative}
-.market-strip span:hover{color:var(--g1)}
-.market-strip span::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:1px;background:var(--g2);transition:.3s;transform:translateX(-50%)}
+.market-strip span:hover{color:var(--c3)}
+.market-strip span::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:1px;background:var(--c2);transition:.3s;transform:translateX(-50%)}
 .market-strip span:hover::after{width:60%}
 
 /* Payment methods footer */
@@ -93,27 +119,24 @@ section{padding:7rem 6%;position:relative;z-index:1}
 .pay-bar h3{font-size:.6rem;text-transform:uppercase;letter-spacing:5px;color:var(--dim);margin-bottom:2.5rem}
 .pay-grid{max-width:1000px;margin:0 auto}
 .pay-row{display:flex;justify-content:center;align-items:center;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
-.pay-item{font-size:.72rem;font-weight:700;letter-spacing:2px;color:#2a2a45;transition:.5s;filter:grayscale(1);opacity:.4;cursor:default}
+.pay-item{font-size:.72rem;font-weight:700;letter-spacing:2px;color:#2a3a55;transition:.5s;filter:grayscale(1);opacity:.4;cursor:default}
 .pay-item img{height:18px;filter:grayscale(1) brightness(.35);transition:.5s}
-.pay-item:hover{opacity:.85;filter:grayscale(0);color:var(--g2)}
+.pay-item:hover{opacity:.85;filter:grayscale(0);color:var(--c3)}
 .pay-item:hover img{filter:grayscale(0) brightness(1)}
-.pay-item.pt{font-size:.8rem;color:#2a2a45}
-.pay-item.pt:hover{color:var(--g1)}
+.pay-item.pt{font-size:.8rem;color:#2a3a55}
+.pay-item.pt:hover{color:var(--c3)}
 
 /* CTA */
 .cta-sec{text-align:center;padding:8rem 6% 5rem;z-index:1;position:relative}
 .cta-sec h2{font-size:clamp(2rem,4vw,3rem);color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.5px}
-.cta-sec .goldtxt{background:linear-gradient(135deg,var(--g1),var(--g3),var(--g4));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta-sec .bluetxt{background:linear-gradient(135deg,var(--c1),var(--c3));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .cta-sec p{color:var(--dim);margin-bottom:2.5rem}
-.cta-sec .email{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--g1),var(--g3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;transition:.3s}
-.cta-sec .email:hover{opacity:.75}
 
 footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:var(--dim);font-size:.75rem;z-index:1;position:relative}
 
-|/* Animations */
+/* Animations */
 @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
-
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
@@ -121,24 +144,24 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 .form-wrap{max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--b);border-radius:12px;padding:3rem}
 .form-group{margin-bottom:1.5rem}
 .form-group label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:.5rem}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:.9rem 1rem;background:rgba(10,10,30,.6);border:1px solid var(--b);border-radius:6px;color:#fff;font-size:.9rem;font-family:inherit;transition:.3s;outline:none}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--g2);background:rgba(10,10,30,.9);box-shadow:0 0 20px rgba(200,160,60,.06)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.9rem 1rem;background:rgba(6,14,26,.6);border:1px solid var(--b);border-radius:6px;color:#fff;font-size:.9rem;font-family:inherit;transition:.3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--c2);background:rgba(6,14,26,.9);box-shadow:0 0 20px rgba(59,130,246,.06)}
 .form-group textarea{min-height:120px;resize:vertical}
 .form-group select{color:var(--dim);cursor:pointer}
 .form-group select option{background:var(--bg2);color:#fff}
 .form-group .honey{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
-.form-submit{width:100%;padding:1rem;background:linear-gradient(135deg,var(--g2),#a07828);color:#0a0a0a;font-weight:700;font-size:.9rem;letter-spacing:2px;border:none;border-radius:6px;cursor:pointer;transition:.3s}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,160,60,.25)}
+.form-submit{width:100%;padding:1rem;background:linear-gradient(135deg,var(--c2),var(--c1));color:#fff;font-weight:700;font-size:.9rem;letter-spacing:2px;border:none;border-radius:6px;cursor:pointer;transition:.3s}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,.25)}
 .form-submit:disabled{opacity:.4;cursor:not-allowed;transform:none}
 .form-msg{padding:.8rem 1rem;border-radius:6px;margin-bottom:1.5rem;font-size:.85rem;display:none}
-.form-msg.success{display:block;background:rgba(60,200,80,.08);border:1px solid rgba(60,200,80,.2);color:#8c8}
-.form-msg.error{display:block;background:rgba(200,60,60,.08);border:1px solid rgba(200,60,60,.2);color:#c88}
+.form-msg.success{display:block;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:#4ade80}
+.form-msg.error{display:block;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:#f87171}
 .form-sent{display:none;text-align:center;padding:2rem}
-.form-sent .icon{font-size:3rem;margin-bottom:1rem}
+.form-sent .icon{font-size:3rem;margin-bottom:1rem;color:var(--c3)}
 .form-sent h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
 .form-sent p{color:var(--dim);font-size:.9rem}
 
-/* Mobile-only line break */
+/* Mobile */
 .mob-br{display:none}
 .mob-dot{display:inline}
 
@@ -150,23 +173,24 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 .why-list{margin:0;padding:0;list-style:none}
 .why-list li{position:relative;padding:1rem 0 1rem 2.5rem;border-bottom:1px solid var(--b);color:var(--txt);font-size:.9rem}
 .why-list li:last-child{border-bottom:none}
-.why-list li::before{content:'✓';position:absolute;left:0;top:1rem;color:var(--g2);font-weight:700}
+.why-list li::before{content:'✓';position:absolute;left:0;top:1rem;color:var(--c3);font-weight:700}
 
 /* Testimonials */
 .t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
-.t-card{background:var(--card);border:1px solid var(--b);border-radius:10px;padding:2.5rem;transition:.5s}
-.t-card:hover{border-color:rgba(200,160,60,.2);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.t-card .q{color:var(--g2);font-size:2rem;line-height:1;margin-bottom:.5rem;opacity:.4}
+.t-card{background:var(--card);border:1px solid var(--b);border-radius:12px;padding:2.5rem;transition:.5s}
+.t-card:hover{border-color:rgba(59,130,246,.2);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.t-card .q{color:var(--c2);font-size:2rem;line-height:1;margin-bottom:.5rem;opacity:.4}
 .t-card blockquote{color:var(--txt);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem;font-style:italic}
+.t-card .stat{display:inline-block;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.1);padding:.3rem .9rem;border-radius:6px;font-size:.75rem;color:var(--c3);font-weight:600;margin-bottom:1rem}
 .t-card .by{font-size:.8rem;color:var(--dim);letter-spacing:1px}
-.t-card .by strong{color:var(--g1);font-weight:600}
+.t-card .by strong{color:var(--c3);font-weight:600}
 
 /* Team */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;max-width:1000px;margin:0 auto}
 .team-card{text-align:center;padding:2rem}
-.team-card .avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--g2),var(--g4));margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#0a0a0a;font-weight:800}
+.team-card .avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--c2),var(--c1));margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;font-weight:800}
 .team-card h4{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
-.team-card .role{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--g2);margin-bottom:.8rem}
+.team-card .role{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--c2);margin-bottom:.8rem}
 .team-card p{color:var(--dim);font-size:.85rem;line-height:1.7}
 
 /* About */
@@ -174,11 +198,23 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 .about-wrap p{color:var(--dim);font-size:1rem;line-height:1.9;max-width:750px;margin:0 auto}
 .about-wrap .stats{display:flex;justify-content:center;gap:3rem;margin-top:2.5rem;flex-wrap:wrap}
 .about-wrap .stats .s{text-align:center}
-.about-wrap .stats .s .v{font-size:1.8rem;font-weight:800;color:var(--g1)}
+.about-wrap .stats .s .v{font-size:1.8rem;font-weight:800;color:var(--c3)}
 .about-wrap .stats .s .l{font-size:.65rem;text-transform:uppercase;letter-spacing:3px;color:var(--dim);margin-top:.2rem}
+
+/* Language Switcher */
+.lang-wrap{display:inline-block;position:relative}
+.lang-btn{background:transparent;border:1px solid var(--b);color:var(--dim);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;padding:.25rem .6rem;border-radius:4px;cursor:pointer;transition:.3s;font-family:inherit;vertical-align:middle}
+.lang-btn:hover{color:var(--c3);border-color:rgba(59,130,246,.3)}
+.lang-dd{display:none;position:absolute;top:100%;right:0;background:var(--bg2);border:1px solid var(--b);border-radius:6px;padding:.3rem;z-index:100;min-width:130px;margin-top:4px}
+.lang-dd.show{display:block}
+.lang-dd a{display:block;padding:.4rem .7rem;color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:1px;border-radius:4px;transition:.3s}
+.lang-dd a:hover{background:var(--b);color:var(--c3)}
+.lang-dd a.active{color:var(--c3)}
 
 @media(max-width:768px){
   nav .links{display:none}
+  .compare-table{font-size:.75rem}
+  .compare-table th,.compare-table td{padding:.8rem .5rem}
   .bignums{gap:2.5rem}.bignums .bn .n{font-size:2.5rem}
   .partners-strip .plist{gap:2rem}.partners-strip .p{font-size:1.2rem}
   .grid{grid-template-columns:1fr}.int-grid{grid-template-columns:1fr}
@@ -186,16 +222,6 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   .mob-br{display:block}
   .mob-dot{display:none}
 }
-
-/* Language Switcher */
-.lang-wrap{display:inline-block;position:relative}
-.lang-btn{background:transparent;border:1px solid var(--b);color:var(--dim);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;padding:.25rem .6rem;border-radius:4px;cursor:pointer;transition:.3s;font-family:inherit;vertical-align:middle}
-.lang-btn:hover{color:var(--g1);border-color:rgba(200,160,60,.3)}
-.lang-dd{display:none;position:absolute;top:100%;right:0;background:var(--bg2);border:1px solid var(--b);border-radius:6px;padding:.3rem;z-index:100;min-width:130px;margin-top:4px}
-.lang-dd.show{display:block}
-.lang-dd a{display:block;padding:.4rem .7rem;color:var(--dim);text-decoration:none;font-size:.7rem;letter-spacing:1px;border-radius:4px;transition:.3s}
-.lang-dd a:hover{background:var(--b);color:var(--g1)}
-.lang-dd a.active{color:var(--g1)}
 </style>
 </head>
 <body>
@@ -203,10 +229,11 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 <canvas id="particles"></canvas>
 
 <nav id="nav">
-  <div class="logo"><span class="l1">A</span><span class="l2">u</span><span class="l3">t</span>ra Group LTD</div>
+  <div class="logo"><svg viewBox="0 0 32 32" fill="none"><rect x="2" y="6" width="28" height="20" rx="4" stroke="#3b82f6" stroke-width="2"/><path d="M10 12h12M10 16h8M10 20h4" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/></svg>AUTRA<span class="l2">&nbsp;GROUP</span></div>
   <div class="links">
     <a href="#why-us">Why Us</a>
     <a href="#services">Services</a>
+    <a href="#compare">Compare</a>
     <a href="#testimonials">Results</a>
     <a href="#team">Team</a>
     <a href="#contact">Contact</a>
@@ -222,18 +249,18 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 </nav>
 
 <section class="hero">
-  <div class="chip">Payment Infrastructure<span class="mob-br"></span><span class="mob-dot"> · </span><span class="mob-br"></span>Asia-Pacific</div>
+  <div class="chip">Payment Infrastructure · <span class="mob-br"></span>Asia-Pacific</div>
   <h1>Every <span class="glow">Payment</span><br>Every <span class="glow">Market</span><br>One <span class="glow">Partner</span></h1>
-  <p>Autra Group manages all your payment gateways, terminals, and settlements across 7 Asian markets—so your store teams only see one system</p>
+  <p>Autra Group unifies Wonder, KPay, and Yedpay into a single managed service — so your APAC payment operations are handled by one team, one relationship, one integration.</p>
   <div class="ctas">
-    <a href="#contact" class="btn-gold">Contact Our Team</a>
-    <a href="#why-us" class="btn-outline">Why Autra?</a>
+    <a href="#contact" class="btn-pri">Contact Our Team</a>
+    <a href="#compare" class="btn-outline">See the Difference</a>
   </div>
 </section>
 
 <div class="bignums">
-  <div class="bn"><div class="n c1" data-count="7">0</div><div class="l">Markets</div></div>
-  <div class="bn"><div class="n c2" data-count="3">0</div><div class="l">Gateways</div></div>
+  <div class="bn"><div class="n c1" data-count="7">0</div><div class="l">Operating Regions</div></div>
+  <div class="bn"><div class="n c2" data-count="3">0</div><div class="l">Gateway Partners</div></div>
   <div class="bn"><div class="n c3" data-count="15">0</div><div class="l">Payment Methods</div></div>
   <div class="bn"><div class="n c4" data-count="10000">0</div><div class="l">Merchants Served</div></div>
 </div>
@@ -251,15 +278,16 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   <div class="s-hdr">
     <div class="tag">Why Work With Us Directly?</div>
     <h2>Why Autra <em>Group</em></h2>
-    <p style="font-size:1.1rem;max-width:600px">Integrating with Wonder, KPay, or Yedpay directly means managing three relationships, three dashboards, and three support lines. We give you one.</p>
+    <p style="font-size:1.1rem;max-width:600px">Integrating with Wonder, KPay, or Yedpay directly means managing three relationships, three dashboards, and three support lines. We consolidate everything into one.</p>
   </div>
   <div class="grid">
     <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
       <div class="no n1">01</div>
       <h3>One Point of Contact</h3>
       <p>When you work with Autra Group, you get a single relationship that covers every gateway. No finger-pointing between processors when something goes wrong — we resolve it.</p>
       <ul class="why-list" style="margin-top:1.2rem">
-        <li>Single onboarding process across all 7 APAC markets</li>
+        <li>Single onboarding process across all 7 Asia-Pacific operating regions</li>
         <li>One reconciliation report, one settlement schedule</li>
         <li>Dedicated support in your local timezone — voice, chat, or email</li>
         <li>We handle compliance, risk assessment, and gateway negotiations</li>
@@ -267,14 +295,15 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
       </ul>
     </div>
     <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
       <div class="no n2">02</div>
       <h3>Deep Local Expertise</h3>
       <p>APAC payments are fragmented — different regulations, preferred methods, and settlement timelines in every market. We've spent years building the relationships and operational know-how that make multi-market acceptance possible without a dedicated in-house payments team.</p>
       <ul class="why-list" style="margin-top:1.2rem">
         <li>10+ years combined APAC payments experience</li>
-        <li>Licensed and compliant in all 7 operating markets</li>
+        <li>Licensed and compliant in all 7 operating regions</li>
         <li>Existing relationships with Wonder, KPay, Yedpay — no cold onboarding</li>
-        <li>We speak the language — Cantonese, Mandarin, English, and local business practices</li>
+        <li>We speak Cantonese, Mandarin, English, and local business practices</li>
       </ul>
     </div>
   </div>
@@ -283,18 +312,103 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 <section id="services">
   <div class="s-hdr">
     <div class="tag">Our Service</div>
-      <h2>Your Dedicated Payments <em>Team</em></h2>
-      <p>We handle the complexity of multi-gateway payments so you can focus on running your business.</p>
+    <h2>Your Dedicated Payments <em>Team</em></h2>
+    <p>We handle the complexity of multi-gateway payments so you can focus on running your business.</p>
   </div>
   <div class="grid">
-    <div class="card reveal"><div class="no n1">01</div><h3>Gateway Management</h3><p>We manage all your gateway integrations — Wonder, KPay, and Yedpay — so you don't have to juggle terminals or reconcile separate dashboards. One relationship, every payment method.</p></div>
-    <div class="card reveal"><div class="no n2">02</div><h3>Settlement & Reconciliation</h3><p>We handle daily reconciliation across all gateways on your behalf. Fees, chargebacks, payouts — tracked and verified by our team. You get one clean report.</p></div>
-    <div class="card reveal"><div class="no n3">03</div><h3>Rapid Onboarding</h3><p>Our team handles KYC, terminal provisioning, and gateway activation for you — in hours, not weeks. Merchants transacting on day one.</p></div>
-    <div class="card reveal"><div class="no n4">04</div><h3>APAC Coverage</h3><p>We operate across Hong Kong, Singapore, Taiwan, Japan, Malaysia, Macau, and Shenzhen. Local compliance in every jurisdiction — managed for you.</p></div>
-    <div class="card reveal"><div class="no n1">05</div><h3>Hardware Support</h3><p>We work with your existing POS terminals, Android smart terminals, and EDC hardware. No rip-and-replace — we handle the configurations and testing.</p></div>
-    <div class="card reveal"><div class="no n2">06</div><h3>Reports & Insights</h3><p>We provide clear, actionable reports on transaction volumes, gateway performance, and merchant health — and we're available to walk you through your data.</p></div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg></div>
+      <div class="no n1">01</div>
+      <h3>Gateway Management</h3><p>We manage all your gateway integrations — Wonder, KPay, and Yedpay — so you don't have to juggle terminals or reconcile separate dashboards. One relationship, every payment method.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="no n2">02</div>
+      <h3>Settlement & Reconciliation</h3><p>We handle daily reconciliation across all gateways on your behalf. Fees, chargebacks, payouts — tracked and verified by our team. You get one clean report.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <div class="no n3">03</div>
+      <h3>Rapid Onboarding</h3><p>Our team handles KYC, terminal provisioning, and gateway activation for you — in hours, not weeks. Merchants transacting on day one.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div class="no n4">04</div>
+      <h3>APAC Coverage</h3><p>We operate across Hong Kong, Singapore, Taiwan, Japan, Malaysia, Macau, and Shenzhen. Local compliance in every jurisdiction — managed for you.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="no n1">05</div>
+      <h3>Hardware Support</h3><p>We work with your existing POS terminals, Android smart terminals, and EDC hardware. No rip-and-replace — we handle the configurations and testing.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--c2)" stroke-width="2" stroke-linecap="round"><path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="no n2">06</div>
+      <h3>Reports & Insights</h3><p>We provide clear, actionable reports on transaction volumes, gateway performance, and merchant health — and we're available to walk you through your data.</p>
+    </div>
   </div>
 </section>
+
+<div class="compare-sec" id="compare">
+  <div class="comp-hdr reveal">
+    <div class="tag">Direct vs Autra</div>
+    <h2>Why <em>One Partner</em> Beats Three</h2>
+    <p>Managing Wonder, KPay, and Yedpay directly means three separate relationships. Here's what changes when you consolidate through Autra Group.</p>
+  </div>
+  <div class="compare-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Direct Integration<br><span style="font-weight:400;font-size:.7rem;color:var(--dim)">3 gateways, 3 vendors</span></th>
+          <th>With Autra Group<br><span style="font-weight:400;font-size:.7rem;color:var(--c3)">One partner, one system</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Points of Contact</td>
+          <td><span class="badge x">3 separate teams</span></td>
+          <td><span class="badge yes">1 dedicated account team</span></td>
+        </tr>
+        <tr>
+          <td>Onboarding Time</td>
+          <td><span class="badge x">4–12 weeks per gateway</span></td>
+          <td><span class="badge yes">48 hours to live</span></td>
+        </tr>
+        <tr>
+          <td>Daily Reconciliation</td>
+          <td><span class="badge x">3 dashboards, manual</span></td>
+          <td><span class="badge yes">1 automated report</span></td>
+        </tr>
+        <tr>
+          <td>Settlement Timing</td>
+          <td><span class="badge x">T+1 to T+3, varies</span></td>
+          <td><span class="badge yes">Unified T+1 schedule</span></td>
+        </tr>
+        <tr>
+          <td>Hardware Management</td>
+          <td><span class="badge x">Self-managed, multi-vendor</span></td>
+          <td><span class="badge yes">End-to-end provisioning</span></td>
+        </tr>
+        <tr>
+          <td>Support SLA</td>
+          <td><span class="badge x">Business hours, 3 queues</span></td>
+          <td><span class="badge yes">Local timezone, voice+chat+email</span></td>
+        </tr>
+        <tr>
+          <td>Compliance Handling</td>
+          <td><span class="badge x">Your team manages each jurisdiction</span></td>
+          <td><span class="badge yes">Managed across all 7 regions</span></td>
+        </tr>
+        <tr>
+          <td>Reporting</td>
+          <td><span class="badge x">3 separate portals</span></td>
+          <td><span class="badge yes">Unified weekly report + walkthrough</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <section id="partners">
   <div class="s-hdr">
@@ -327,17 +441,20 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   <div class="t-grid">
     <div class="t-card reveal">
       <div class="q">"</div>
-      <blockquote>We were managing three separate terminals for Wonder, KPay, and Yedpay across 12 stores. Autra Group consolidated everything into one system — and they handled the entire rollout in under two weeks.</blockquote>
+      <div class="stat">12 stores · 80% faster reconciliation</div>
+      <blockquote>We were managing three separate terminals for Wonder, KPay, and Yedpay across 12 stores. Autra Group consolidated everything into one system — and they handled the entire rollout in under two weeks. Our finance team went from 5 hours of daily reconciliation to under one.</blockquote>
       <div class="by">— Operations Director, <strong>Hong Kong Retail Chain</strong></div>
     </div>
     <div class="t-card reveal">
       <div class="q">"</div>
-      <blockquote>The onboarding was the real differentiator. We went from signed agreement to live transactions in 48 hours. Our previous gateway integration took three months.</blockquote>
+      <div class="stat">48 hours to live · 90% faster than industry average</div>
+      <blockquote>The onboarding was the real differentiator. We went from signed agreement to live transactions in 48 hours. Our previous gateway integration took three months. The hardware arrived pre-configured and we were processing payments before lunch.</blockquote>
       <div class="by">— CEO, <strong>Singapore F&B Group</strong></div>
     </div>
     <div class="t-card reveal">
       <div class="q">"</div>
-      <blockquote>The weekly reconciliation reports alone saved us countless hours. And when we needed help interpreting cross-border settlement data, their team walked us through it personally.</blockquote>
+      <div class="stat">Zero cross-border settlement errors in 6 months</div>
+      <blockquote>The weekly reconciliation reports alone saved us countless hours. And when we needed help interpreting cross-border settlement data across three markets, their team walked us through it personally. We haven't had a single settlement discrepancy since switching.</blockquote>
       <div class="by">— Finance Director, <strong>Taiwan E-Commerce Platform</strong></div>
     </div>
   </div>
@@ -353,7 +470,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   <div class="s-hdr">
     <div class="tag">Our Team</div>
     <h2>Who We <em>Are</em></h2>
-    <p>Founded by payments industry veterans who have spent over a decade building payment infrastructure across Asia-Pacific.</p>
+    <p>Founded by payments industry veterans with over a decade building payment infrastructure across Asia-Pacific.</p>
   </div>
   <div class="team-grid">
     <div class="team-card reveal">
@@ -366,7 +483,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
       <div class="avatar">AL</div>
       <h4>Alex Lau</h4>
       <div class="role">Head of Operations</div>
-      <p>Oversees merchant onboarding, gateway integrations, and settlement operations across all 7 markets. Alex ensures every merchant goes from signed to live in hours, not weeks.</p>
+      <p>Oversees merchant onboarding, gateway integrations, and settlement operations across all 7 operating regions. Alex ensures every merchant goes from signed to live in hours, not weeks.</p>
     </div>
     <div class="team-card reveal">
       <div class="avatar">KC</div>
@@ -411,7 +528,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
     <p>Autra Group was founded because APAC merchants deserve better than juggling multiple payment gateways, terminals, and support lines. We integrate Wonder, KPay, and Yedpay into one seamless experience — and we stand behind it with real human support in your timezone.</p>
     <div class="stats">
       <div class="s"><div class="v">10+</div><div class="l">Years Combined APAC Experience</div></div>
-      <div class="s"><div class="v">7</div><div class="l">Active Markets</div></div>
+      <div class="s"><div class="v">7</div><div class="l">Operating Regions</div></div>
       <div class="s"><div class="v">15+</div><div class="l">Payment Methods</div></div>
       <div class="s"><div class="v">10K+</div><div class="l">Merchants Served</div></div>
     </div>
@@ -420,7 +537,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 
 <section class="cta-sec" id="contact">
   <div class="s-hdr"><div class="tag">Contact</div></div>
-  <h2>Let's Discuss Your <span class="goldtxt">Markets</span></h2>
+  <h2>Let's Discuss Your <span class="bluetxt">Markets</span></h2>
   <p>One conversation, one integration, every market. Tell us where you operate and we'll show you how we can help.</p>
   
   <div class="form-wrap" id="form-wrap">
@@ -439,9 +556,9 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
         <input type="text" id="company" name="company" placeholder="Your business name">
       </div>
       <div class="form-group">
-        <label for="market">Primary Market</label>
+        <label for="market">Primary Region</label>
         <select id="market" name="market">
-          <option value="">Select a market...</option>
+          <option value="">Select a region...</option>
           <option value="Hong Kong">Hong Kong</option>
           <option value="Singapore">Singapore</option>
           <option value="Taiwan">Taiwan</option>
@@ -449,7 +566,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
           <option value="Malaysia">Malaysia</option>
           <option value="Macau">Macau</option>
           <option value="Shenzhen">Shenzhen</option>
-          <option value="Multiple">Multiple Markets</option>
+          <option value="Multi-Region">Multi-Region</option>
           <option value="Other">Other</option>
         </select>
       </div>
@@ -457,7 +574,6 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
         <label for="message">Message *</label>
         <textarea id="message" name="message" required placeholder="Tell us about your payment needs..."></textarea>
       </div>
-      <!-- Honeypot — invisible to humans -->
       <div class="honey">
         <label for="website">Website</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
@@ -473,14 +589,14 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   </div>
   
   <p style="margin-top:2rem;font-size:.8rem;color:var(--dim)">
-    Or email us directly: <a href="mailto:info@autragroupltd.com" style="color:var(--g2);text-decoration:none">info@autragroupltd.com</a>
+    Or email us directly: <a href="mailto:info@autragroupltd.com" style="color:var(--c3);text-decoration:none">info@autragroupltd.com</a>
   </p>
 </section>
 
 <footer>&copy; 2026 Autra Group Ltd — Hong Kong SAR</footer>
 
 <script>
-// Gold particle system
+// Blue glow particle system
 const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
 let W,H,particles=[];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
@@ -493,8 +609,8 @@ class Particle{
     this.size=Math.random()*1.5+.3;
     this.speedY=-(Math.random()*.4+.1);
     this.speedX=(Math.random()-.5)*.3;
-    this.opacity=Math.random()*.5+.1;
-    this.hue=35+Math.random()*20; // gold range
+    this.opacity=Math.random()*.4+.08;
+    this.hue=210+Math.random()*30; // blue range
   }
   update(){
     this.y+=this.speedY;this.x+=this.speedX;
@@ -502,21 +618,20 @@ class Particle{
   }
   draw(){
     ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fillStyle=`hsla(${this.hue},60%,65%,${this.opacity})`;ctx.fill();
+    ctx.fillStyle=`hsla(${this.hue},70%,55%,${this.opacity})`;ctx.fill();
   }
 }
 for(let i=0;i<80;i++)particles.push(new Particle());
 function animate(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{p.update();p.draw()});
-  // draw connections
   for(let i=0;i<particles.length;i++){
     for(let j=i+1;j<particles.length;j++){
       let dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
       let dist=Math.sqrt(dx*dx+dy*dy);
       if(dist<120){
         ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.strokeStyle=`rgba(200,160,60,${.03*(1-dist/120)})`;ctx.stroke();
+        ctx.strokeStyle=`rgba(59,130,246,${.025*(1-dist/120)})`;ctx.stroke();
       }
     }
   }
@@ -575,16 +690,12 @@ document.addEventListener('click',function(e){var dd=document.getElementById('la
   var msg=document.getElementById('form-msg');
   var sent=document.getElementById('form-sent');
   var tInput=document.getElementById('_t');
-  
-  // Set timestamp when page loads (for bot detection)
   tInput.value=Date.now();
-  
   form.addEventListener('submit',function(e){
     e.preventDefault();
     msg.style.display='none';
     btn.disabled=true;
     btn.textContent='Sending...';
-    
     var data=new FormData(form);
     fetch(form.action,{method:'POST',body:data})
       .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}})})
