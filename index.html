@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Autra Group — The Payment Platform for Asia-Pacific</title>
 <style>
-:root{--nb:#0b1628;--nb2:#0e1d38;--nb3:#12254a;--c1:#1a73e8;--c2:#3b82f6;--c3:#60a5fa;--c4:#93c5fd;--bg:#060e1a;--bg2:#0a1628;--card:#0d1f3c;--txt:#d0dce8;--dim:#6a80a0;--b:rgba(59,130,246,.08);--g:rgba(59,130,246,.15)}
+:root{--c1:#1a73e8;--c2:#3b82f6;--c3:#60a5fa;--c4:#93c5fd;--bg:#060e1a;--bg2:#0a1628;--card:#0d1f3c;--txt:#d0dce8;--dim:#6a80a0;--b:rgba(59,130,246,.08)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
@@ -188,7 +188,8 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
 /* Team */
 .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem;max-width:1000px;margin:0 auto}
 .team-card{text-align:center;padding:2rem}
-.team-card .avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--c2),var(--c1));margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:#fff;font-weight:800}
+.team-card .avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--c2),var(--c1));margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.team-card .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .team-card h4{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
 .team-card .role{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--c2);margin-bottom:.8rem}
 .team-card p{color:var(--dim);font-size:.85rem;line-height:1.7}
@@ -238,7 +239,7 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
     <a href="#team">Team</a>
     <a href="#contact">Contact</a>
     <div class="lang-wrap">
-      <button class="lang-btn" onclick="document.getElementById('lang-dd').classList.toggle('show')">🌐 EN</button>
+      <button class="lang-btn" onclick="if (!window.__cfRLUnblockHandlers) return false; document.getElementById('lang-dd').classList.toggle('show')" data-cf-modified-25e69dc4c27f0627191a5a29-="">🌐 EN</button>
       <div class="lang-dd" id="lang-dd">
         <a href="/" class="active">English</a>
         <a href="/zh-hant">繁體中文</a>
@@ -480,13 +481,13 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
       <p>10+ years in APAC payments and merchant services. Previously led regional payment partnerships across Hong Kong, Singapore, and Greater China. Founded Autra Group to solve the fragmentation that merchants face daily.</p>
     </div>
     <div class="team-card reveal">
-      <div class="avatar">RA</div>
+      <div class="avatar"><img src="ray.jpg" alt="Ray"></div>
       <h4>Ray</h4>
       <div class="role">Head of Operations</div>
       <p>Oversees merchant onboarding, gateway integrations, and settlement operations across all 7 operating regions. Ray ensures every merchant goes from signed to live in hours, not weeks.</p>
     </div>
     <div class="team-card reveal">
-      <div class="avatar">TK</div>
+      <div class="avatar"><img src="tim-kwok.jpg" alt="Tim Kwok"></div>
       <h4>Tim Kwok</h4>
       <div class="role">Client Services Director</div>
       <p>Your team's point of contact for support, reporting, and relationship management. Tim and his team are available in your local timezone — voice, chat, or email.</p>
@@ -589,13 +590,13 @@ footer{text-align:center;padding:2.5rem 6%;border-top:1px solid var(--b);color:v
   </div>
   
   <p style="margin-top:2rem;font-size:.8rem;color:var(--dim)">
-    Or email us directly: <a href="mailto:info@autragroupltd.com" style="color:var(--c3);text-decoration:none">info@autragroupltd.com</a>
+    Or email us directly: <a href="/cdn-cgi/l/email-protection#88e1e6eee7c8e9fdfcfae9effae7fdf8e4fceca6ebe7e5" style="color:var(--c3);text-decoration:none"><span class="__cf_email__" data-cfemail="274e49414867465253554640554852574b53430944484a">[email&#160;protected]</span></a>
   </p>
 </section>
 
 <footer>&copy; 2026 Autra Group Ltd — Hong Kong SAR</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="25e69dc4c27f0627191a5a29-text/javascript">
 // Blue glow particle system
 const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
 let W,H,particles=[];
@@ -609,7 +610,7 @@ class Particle{
     this.size=Math.random()*1.5+.3;
     this.speedY=-(Math.random()*.4+.1);
     this.speedX=(Math.random()-.5)*.3;
-    this.opacity=Math.random()*.4+.08;
+    this.opacity=Math.random()*.55+.25;
     this.hue=210+Math.random()*30; // blue range
   }
   update(){
@@ -621,7 +622,7 @@ class Particle{
     ctx.fillStyle=`hsla(${this.hue},70%,55%,${this.opacity})`;ctx.fill();
   }
 }
-for(let i=0;i<80;i++)particles.push(new Particle());
+for(let i=0;i<120;i++)particles.push(new Particle());
 function animate(){
   ctx.clearRect(0,0,W,H);
   particles.forEach(p=>{p.update();p.draw()});
@@ -631,7 +632,7 @@ function animate(){
       let dist=Math.sqrt(dx*dx+dy*dy);
       if(dist<120){
         ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
-        ctx.strokeStyle=`rgba(59,130,246,${.025*(1-dist/120)})`;ctx.stroke();
+        ctx.strokeStyle=`rgba(59,130,246,${.04*(1-dist/120)})`;ctx.stroke();
       }
     }
   }
@@ -721,5 +722,5 @@ document.addEventListener('click',function(e){var dd=document.getElementById('la
   });
 })();
 </script>
-</body>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="25e69dc4c27f0627191a5a29-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a11cc7088f0806fc',t:'MTc4MjQ4MjgzNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
